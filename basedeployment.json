@@ -87,8 +87,8 @@
       "name": "[concat('vm', parameters('clusterName'), padLeft(copyIndex(), 2, '0'), '/Installation')]",
       "location": "[resourceGroup().location]",
       "dependsOn": [
-	            "[concat('Microsoft.Compute/virtualMachines/', 'vm', parameters('clusterName'), padLeft(copyIndex(), 2, '0'))]"
-	            ],
+        "[concat('Microsoft.Compute/virtualMachines/', 'vm', parameters('clusterName'), padLeft(copyIndex(), 2, '0'))]"
+      ],
       "copy": {
         "name": "foo",
         "count": "[parameters('instanceCountPerSA')]"
@@ -98,8 +98,9 @@
         "type": "CustomScriptForLinux",
         "typeHandlerVersion": "1.4",
         "settings": {
-          "fileUris": [ "[parameters('finaldeployScriptURI')]"
-           ],
+          "fileUris": [
+            "[parameters('finaldeployScriptURI')]"
+          ],
           "commandToExecute": "[concat('bash finaldeploy.sh',' ', parameters('masterHostName'),' ', parameters('hpcUserName'))]"
         }
       }
@@ -153,4 +154,5 @@
     }
   ]
 }
+
 
